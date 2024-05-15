@@ -76,6 +76,7 @@ class FlutterBeaconScanner {
           Map map = (Map) object;
           Region region = FlutterBeaconUtils.regionFromMap(map);
           if (region != null) {
+            Log.d("REGION", region);
             regionRanging.add(region);
           }
         }
@@ -100,8 +101,8 @@ class FlutterBeaconScanner {
 
     try {
       if (plugin.getBeaconManager() != null) {
-        plugin.getBeaconManager().getBeaconParsers().add(eBeaconLayout)
-        plugin.getBeaconManager().getBeaconParsers().add(eBeaconLayout2)
+        plugin.getBeaconManager().getBeaconParsers().add(eBeaconLayout);
+        plugin.getBeaconManager().getBeaconParsers().add(eBeaconLayout2);
         plugin.getBeaconManager().removeAllRangeNotifiers();
         plugin.getBeaconManager().addRangeNotifier(rangeNotifier);
         for (Region region : regionRanging) {
