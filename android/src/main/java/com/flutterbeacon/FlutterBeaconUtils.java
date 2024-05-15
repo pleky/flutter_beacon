@@ -36,8 +36,8 @@ class FlutterBeaconUtils {
     Map<String, Object> map = new HashMap<>();
 
     map.put("proximityUUID", beacon.getId1().toString().toUpperCase());
-    map.put("major", beacon.getId2().toInt());
-    map.put("minor", beacon.getId3().toInt());
+    map.put("major", beacon.getId2().toString());
+    map.put("minor", beacon.getId3().toString());
     map.put("rssi", beacon.getRssi());
     map.put("txPower", beacon.getTxPower());
     map.put("accuracy", String.format(Locale.US, "%.2f", beacon.getDistance()));
@@ -54,10 +54,10 @@ class FlutterBeaconUtils {
       map.put("proximityUUID", region.getId1().toString());
     }
     if (region.getId2() != null) {
-      map.put("major", region.getId2().toInt());
+      map.put("major", region.getId2().toString());
     }
     if (region.getId3() != null) {
-      map.put("minor", region.getId3().toInt());
+      map.put("minor", region.getId3().toString());
     }
 
     return map;
@@ -81,12 +81,12 @@ class FlutterBeaconUtils {
       }
 
       Object major = map.get("major");
-      if (major instanceof Integer) {
-        identifiers.add(Identifier.fromInt((Integer) major));
+      if (major instanceof String) {
+        identifiers.add(Identifier.parse((String) major));
       }
       Object minor = map.get("minor");
-      if (minor instanceof Integer) {
-        identifiers.add(Identifier.fromInt((Integer) minor));
+      if (minor instanceof String) {
+        identifiers.add(Identifier.parse((String) minor));
       }
 
       return new Region(identifier, identifiers);
@@ -105,12 +105,12 @@ class FlutterBeaconUtils {
       builder.setId1((String) proximityUUID);
     }
     Object major = map.get("major");
-    if (major instanceof Integer) {
-      builder.setId2(major.toString());
+    if (major instanceof String) {
+      builder.setId2((String) major);
     }
     Object minor = map.get("minor");
-    if (minor instanceof Integer) {
-      builder.setId3(minor.toString());
+    if (minor instanceof String) {
+      builder.setId3((String) minor);
     }
 
     Object txPower = map.get("txPower");
