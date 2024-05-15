@@ -36,8 +36,8 @@ class FlutterBeaconUtils {
     Map<String, Object> map = new HashMap<>();
 
     map.put("proximityUUID", beacon.getId1().toString().toUpperCase());
-    map.put("major", beacon.getId2().toString());
-    map.put("minor", beacon.getId3().toString());
+    // map.put("major", beacon.getId2().toString());
+    // map.put("minor", beacon.getId3().toString());
     map.put("rssi", beacon.getRssi());
     map.put("txPower", beacon.getTxPower());
     map.put("accuracy", String.format(Locale.US, "%.2f", beacon.getDistance()));
@@ -53,12 +53,12 @@ class FlutterBeaconUtils {
     if (region.getId1() != null) {
       map.put("proximityUUID", region.getId1().toString());
     }
-    if (region.getId2() != null) {
-      map.put("major", region.getId2().toString());
-    }
-    if (region.getId3() != null) {
-      map.put("minor", region.getId3().toString());
-    }
+    // if (region.getId2() != null) {
+    //   map.put("major", region.getId2().toString());
+    // }
+    // if (region.getId3() != null) {
+    //   map.put("minor", region.getId3().toString());
+    // }
 
     return map;
   }
@@ -80,14 +80,14 @@ class FlutterBeaconUtils {
         identifiers.add(Identifier.parse((String) proximityUUID));
       }
 
-      Object major = map.get("major");
-      if (major instanceof String) {
-        identifiers.add(Identifier.parse((String) major));
-      }
-      Object minor = map.get("minor");
-      if (minor instanceof String) {
-        identifiers.add(Identifier.parse((String) minor));
-      }
+      // Object major = map.get("major");
+      // if (major instanceof String) {
+      //   identifiers.add(Identifier.parse((String) major));
+      // }
+      // Object minor = map.get("minor");
+      // if (minor instanceof String) {
+      //   identifiers.add(Identifier.parse((String) minor));
+      // }
 
       return new Region(identifier, identifiers);
     } catch (IllegalArgumentException e) {
@@ -104,14 +104,14 @@ class FlutterBeaconUtils {
     if (proximityUUID instanceof String) {
       builder.setId1((String) proximityUUID);
     }
-    Object major = map.get("major");
-    if (major instanceof String) {
-      builder.setId2((String) major);
-    }
-    Object minor = map.get("minor");
-    if (minor instanceof String) {
-      builder.setId3((String) minor);
-    }
+    // Object major = map.get("major");
+    // if (major instanceof String) {
+    //   builder.setId2((String) major);
+    // }
+    // Object minor = map.get("minor");
+    // if (minor instanceof String) {
+    //   builder.setId3((String) minor);
+    // }
 
     Object txPower = map.get("txPower");
     if (txPower instanceof Integer) {
