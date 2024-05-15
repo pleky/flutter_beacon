@@ -76,7 +76,7 @@ class FlutterBeaconScanner {
           Map map = (Map) object;
           Region region = FlutterBeaconUtils.regionFromMap(map);
           if (region != null) {
-            Log.d("REGION", region);
+            // Log.d("REGION", region);
             regionRanging.add(region);
           }
         }
