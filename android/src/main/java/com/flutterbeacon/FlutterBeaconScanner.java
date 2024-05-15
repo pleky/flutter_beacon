@@ -133,7 +133,7 @@ class FlutterBeaconScanner {
   private final RangeNotifier rangeNotifier = new RangeNotifier() {
     @Override
     public void didRangeBeaconsInRegion(Collection<Beacon> collection, Region region) {
-      Log.i("NEW BEACON IS IN REGION");
+      Log.d("MyActivity","NEW BEACON IS IN REGION");
       if (eventSinkRanging != null) {
         final Map<String, Object> map = new HashMap<>();
         map.put("region", FlutterBeaconUtils.regionToMap(region));
