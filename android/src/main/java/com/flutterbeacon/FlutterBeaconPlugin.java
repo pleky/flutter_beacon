@@ -26,8 +26,8 @@ public class FlutterBeaconPlugin implements FlutterPlugin, ActivityAware, Method
     PluginRegistry.RequestPermissionsResultListener,
     PluginRegistry.ActivityResultListener {
   
-  private static final BeaconParser iBeaconLayout = new BeaconParser()
-      .setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
+  private static final BeaconParser iBeaconLayout = new BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
+  
 
   static final int REQUEST_CODE_LOCATION = 1234;
   static final int REQUEST_CODE_BLUETOOTH = 5678;

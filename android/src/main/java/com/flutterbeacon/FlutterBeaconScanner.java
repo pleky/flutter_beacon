@@ -11,6 +11,9 @@ import android.util.Log;
 
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconConsumer;
+import org.altbeacon.beacon.BeaconManager;
+import org.altbeacon.beacon.BeaconParser;
+import org.altbeacon.beacon.BeaconTransmitter;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
@@ -41,6 +44,9 @@ class FlutterBeaconScanner {
     this.activity = new WeakReference<>(activity);
     handler = new Handler(Looper.getMainLooper());
   }
+
+  private static final BeaconParser eBeaconLayout = new BeaconParser().setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT);
+  private static final BeaconParser eBeaconLayout2 = new BeaconParser().setBeaconLayout(BeaconParser.EDDYSTONE_TLM_LAYOUT);
 
   final EventChannel.StreamHandler rangingStreamHandler = new EventChannel.StreamHandler() {
     @Override
@@ -94,6 +100,8 @@ class FlutterBeaconScanner {
 
     try {
       if (plugin.getBeaconManager() != null) {
+        plugin.getBeaconManager().getBeaconParsers().add(eBeaconLayout)
+        plugin.getBeaconManager().getBeaconParsers().add(eBeaconLayout2)
         plugin.getBeaconManager().removeAllRangeNotifiers();
         plugin.getBeaconManager().addRangeNotifier(rangeNotifier);
         for (Region region : regionRanging) {
