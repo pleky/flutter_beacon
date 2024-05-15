@@ -17,12 +17,12 @@ class Region {
   /// The major number of region.
   ///
   /// For both Android and iOS, this value can be null.
-  final int? major;
+  // final int? major;
 
   /// The minor number of region.
   ///
   /// For both Android and iOS, this value can be null.
-  final int? minor;
+  // final int? minor;
 
   /// Constructor for creating [Region] object.
   ///
@@ -30,8 +30,8 @@ class Region {
   Region({
     required this.identifier,
     this.proximityUUID,
-    this.major,
-    this.minor,
+    // this.major,
+    // this.minor,
   }) {
     if (Platform.isIOS) {
       assert(
@@ -46,8 +46,8 @@ class Region {
       : this(
           identifier: json['identifier'],
           proximityUUID: json['proximityUUID'],
-          major: _parseMajorMinor(json['major']),
-          minor: _parseMajorMinor(json['minor']),
+          // major: _parseMajorMinor(json['major']),
+          // minor: _parseMajorMinor(json['minor']),
         );
 
   /// Return the serializable of this object into [Map].
@@ -60,23 +60,20 @@ class Region {
       map['proximityUUID'] = proximityUUID;
     }
 
-    if (major != null) {
-      map['major'] = major;
-    }
+    // if (major != null) {
+    //   map['major'] = major;
+    // }
 
-    if (minor != null) {
-      map['minor'] = minor;
-    }
+    // if (minor != null) {
+    //   map['minor'] = minor;
+    // }
 
     return map;
   }
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Region &&
-          runtimeType == other.runtimeType &&
-          identifier == other.identifier;
+      identical(this, other) || other is Region && runtimeType == other.runtimeType && identifier == other.identifier;
 
   @override
   int get hashCode => identifier.hashCode;

@@ -13,10 +13,10 @@ class BeaconBroadcast {
   final String proximityUUID;
 
   /// The major value of beacon.
-  final int major;
+  // final int major;
 
   /// The minor value of beacon.
-  final int minor;
+  // final int minor;
 
   /// The txPower value of beacon. Specify null to use the default value for the device.
   final int? txPower;
@@ -28,8 +28,8 @@ class BeaconBroadcast {
   BeaconBroadcast({
     this.identifier = 'com.flutterBeacon',
     required this.proximityUUID,
-    required this.major,
-    required this.minor,
+    // required this.major,
+    // required this.minor,
     this.txPower,
     this.advertisingMode = AdvertisingMode.low,
     this.advertisingTxPowerLevel = AdvertisingTxPowerLevel.high,
@@ -46,8 +46,8 @@ class BeaconBroadcast {
   dynamic get toJson {
     final map = <String, dynamic>{
       'proximityUUID': proximityUUID,
-      'major': major,
-      'minor': minor,
+      // 'major': major,
+      // 'minor': minor,
       'txPower': txPower,
     };
 

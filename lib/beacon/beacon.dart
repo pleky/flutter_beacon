@@ -18,10 +18,10 @@ class Beacon {
   final String? macAddress;
 
   /// The major value of beacon.
-  final int major;
+  // final int major;
 
   /// The minor value of beacon.
-  final int minor;
+  // final int minor;
 
   /// The rssi value of beacon.
   final int rssi;
@@ -41,8 +41,8 @@ class Beacon {
   const Beacon({
     required this.proximityUUID,
     this.macAddress,
-    required this.major,
-    required this.minor,
+    // required this.major,
+    // required this.minor,
     int? rssi,
     this.txPower,
     required this.accuracy,
@@ -55,8 +55,8 @@ class Beacon {
       : this(
           proximityUUID: json['proximityUUID'],
           macAddress: json['macAddress'],
-          major: json['major'],
-          minor: json['minor'],
+          // major: json['major'],
+          // minor: json['minor'],
           rssi: _parseInt(json['rssi']),
           txPower: _parseInt(json['txPower']),
           accuracy: _parseDouble(json['accuracy']),
@@ -128,8 +128,8 @@ class Beacon {
   dynamic get toJson {
     final map = <String, dynamic>{
       'proximityUUID': proximityUUID,
-      'major': major,
-      'minor': minor,
+      // 'major': major,
+      // 'minor': minor,
       'rssi': rssi,
       'accuracy': accuracy,
       'proximity': proximity.toString().split('.').last
@@ -180,13 +180,14 @@ class Beacon {
       other is Beacon &&
           runtimeType == other.runtimeType &&
           proximityUUID == other.proximityUUID &&
-          major == other.major &&
-          minor == other.minor &&
+          // major == other.major &&
+          // minor == other.minor &&
           (macAddress != null ? macAddress == other.macAddress : true);
 
   @override
   int get hashCode {
-    int hashCode = proximityUUID.hashCode ^ major.hashCode ^ minor.hashCode;
+    // int hashCode = proximityUUID.hashCode ^ major.hashCode ^ minor.hashCode;
+    int hashCode = proximityUUID.hashCode;
     if (macAddress != null) {
       hashCode = hashCode ^ macAddress.hashCode;
     }
